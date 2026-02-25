@@ -11,7 +11,7 @@ permissions:
   id-token: write
 jobs:
   register-artifact:
-    uses: cloudbees.io/register-build-artifact@v1.0.6
+    uses: cloudbees.io/register-build-artifact
     vars: inherit
     secrets: inherit
     with:
