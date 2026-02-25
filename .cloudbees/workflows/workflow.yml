@@ -17,4 +17,4 @@ jobs:
     with:
       name: dummy-go-gha
       version: 0.0.1
-      url: https://example.test/dummy-go-gha/0.0.1/dummy-go-gha
+      url: https://example.test/dummy-go-gha/0.0.1/dummy-go-gha-action
