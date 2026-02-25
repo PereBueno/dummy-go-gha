@@ -1,0 +1,30 @@
+name: scan-build-push-ecr
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+on:
+  push:
+    branches:
+      - '**'
+permissions:
+  scm-token-own: read
+  scm-token-org: read
+  id-token: write
+jobs:
+  build-gha-register-deployed-artifact-action:
+    uses: calculi-corp/unify-platform/.cloudbees/workflows/action/action.yaml
+    vars: inherit
+    secrets: inherit
+    with:
+      run-unit-test: "true"
+      go-binary-build: "true"
+      kaniko-build: "true"
+      trivy-scan-container: "true"
+      go-binary-name: gha_register_deployed_artifact_app
+      service-name: gha-register-deployed-artifact
+      dockerfile-path: Dockerfile
+      unit-test-percent: "80"
+      sonarqube-threshold-critical: 0
+      sonarqube-threshold-very-high: 0
+      sonarqube-threshold-high: 0
+      sonarqube-threshold-medium: 0
+      sonarqube-threshold-low: 0
