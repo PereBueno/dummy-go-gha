@@ -10,15 +10,11 @@ permissions:
   scm-token-org: read
   id-token: write
 jobs:
-  build-gha:
-    uses: calculi-corp/cb-internal-shared-actions/build/action@v8
+  register-artifact:
+    uses: cloudbees.io/register-build-artifact@v1.0.6
     vars: inherit
     secrets: inherit
     with:
-      run-unit-test: "true"
-      go-binary-build: "true"
-      kaniko-build: "true"
-      go-binary-name: dummy-go-gha
-      service-name: dummy-go-gha
-      dockerfile-path: Dockerfile
-      unit-test-percent: "80"
+      - name: dummy-go-gha
+      - version: 0.0.1
+      - url: https://example.test/dummy-go-gha/0.0.1/dummy-go-gha
