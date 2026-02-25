@@ -2,6 +2,12 @@ name: scan-build-push-ecr
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - reopened
+      - opened
+      - synchronize
   push:
     branches:
       - '**'

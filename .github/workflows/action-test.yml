@@ -33,6 +33,17 @@ jobs:
         run: |
           go build -o dummy-go-gha && \
           chmod +x dummy-go-gha
+      - name: register-build-artifact
+        id: register_artifact_1
+        uses: cloudbees-io-gha/register-build-artifact@v3
+        with:
+          cloudbees-url: "https://api.saas-preprod.beescloud.com"
+          name: h-deployed-artifact-test-1
+          url: "docker.io/hdevanan/h-test-artifact-1:1.0.1"
+          version: 1.0.1
+          label: staging,qa,prod
+          type: "docker"
+          digest: "sha256:1234567890abcdef123456123456abcdefabcdef123456"
       - name: Register deployed artifact
         uses: ./
         id: register-deployed-artifact
