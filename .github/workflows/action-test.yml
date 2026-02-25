@@ -31,8 +31,8 @@ jobs:
           GOOS: linux
           GOARCH: amd64
         run: |
-          go build -o gha_register_deployed_artifact_app && \
-          chmod +x gha_register_deployed_artifact_app
+          go build -o dummy-go-gha && \
+          chmod +x dummy-go-gha
       - name: Register deployed artifact
         uses: ./
         id: register-deployed-artifact
