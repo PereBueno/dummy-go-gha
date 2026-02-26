@@ -10,7 +10,7 @@ on:
       - synchronize
   push:
     branches:
-      - '**'
+      - "**"
 permissions:
   scm-token-own: read
   scm-token-org: read
@@ -21,15 +21,10 @@ jobs:
       - name: Get sourcecode
         uses: cloudbees-io/checkout@v1
       - name: register build
-        uses: cloudbees.io/register-build-artifact
+        kind: build
+        uses: cloudbees-io/register-build-artifact@v2
         with:
           cloudbees-url: https://api.saas-preprod.beescloud.com
-          name: dummy-go-gha
           version: 0.0.1
           url: https://example.test/dummy-go-gha/0.0.1/dummy-go-gha-action
-      - name: register deployment
-        uses: cloudbees.io/register-deployed-artifact
-        with:
-          cloudbees-url: https://api.saas-preprod.beescloud.com
-          target-environment: pere-test
-          url: https://example.test/dummy-go-gha/0.0.1/dummy-go-gha-action
+          action-name: dummy-go-gha
