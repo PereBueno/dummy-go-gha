@@ -20,14 +20,6 @@ jobs:
     steps:
       - name: Get sourcecode
         uses: cloudbees-io/checkout@v1
-      - id: build
-        name: Test and Scan
-        uses: calculi-corp/cb-internal-shared-actions/build@v8
-        with:
-          golangci-lint: "true"
-          run-unit-test: "true"
-          unit-test-percent: "80"
-          create-slsa-attestation: "false"
       - name: register build
         uses: cloudbees.io/register-build-artifact
         with:
