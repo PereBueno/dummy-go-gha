@@ -24,6 +24,4 @@ jobs:
         kind: build
         uses: cloudbees-io/register-deployed-artifact@v2
         with:
-          version: 0.0.1
-          url: https://example.test/dummy-go-gha/0.0.1/dummy-go-gha-action
-          action-name: dummy-go-gha
+          artifact-id: f78bf07e-56e7-452f-a1e5-9beaf5b4c52c
