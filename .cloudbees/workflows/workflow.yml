@@ -30,8 +30,6 @@ jobs:
           create-slsa-attestation: "false"
       - name: register build
         uses: cloudbees.io/register-build-artifact
-        vars: inherit
-        secrets: inherit
         with:
           cloudbees-url: https://api.saas-preprod.beescloud.com
           name: dummy-go-gha
@@ -39,9 +37,7 @@ jobs:
           url: https://example.test/dummy-go-gha/0.0.1/dummy-go-gha-action
       - name: register deployment
         uses: cloudbees.io/register-deployed-artifact
-        vars: inherit
-        secrets: inherit
         with:
           cloudbees-url: https://api.saas-preprod.beescloud.com
-          target.environment: pere-test
+          target-environment: pere-test
           url: https://example.test/dummy-go-gha/0.0.1/dummy-go-gha-action
