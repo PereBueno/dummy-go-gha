@@ -22,8 +22,8 @@ jobs:
         uses: cloudbees-io/checkout@v1
       - name: register build
         kind: build
-        uses: cloudbees-io/register-build-artifact@v2
-        with:          
+        uses: cloudbees-io/register-deployed-artifact@v2
+        with:
           version: 0.0.1
           url: https://example.test/dummy-go-gha/0.0.1/dummy-go-gha-action
-          name: dummy-go-gha
+          action-name: dummy-go-gha
