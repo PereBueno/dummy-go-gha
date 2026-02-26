@@ -27,4 +27,4 @@ jobs:
           cloudbees-url: https://api.saas-preprod.beescloud.com
           version: 0.0.1
           url: https://example.test/dummy-go-gha/0.0.1/dummy-go-gha-action
-          action-name: dummy-go-gha
+          name: dummy-go-gha
