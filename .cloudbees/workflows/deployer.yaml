@@ -4,9 +4,9 @@ name: deployer
 on:
   workflow_dispatch:
     inputs:
-      dummy-param:
+      manifest:
         type: string
-        default: dummt
+        default: dummy
 jobs:
   dummy-go:
     steps:
