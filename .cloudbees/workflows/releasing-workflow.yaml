@@ -24,7 +24,7 @@ jobs:
       instructions: Approve the release
       disallowLaunchByUser: false
       notifyAllEligibleUsers: false
-      approvers: 7836ca44-05b3-11ec-94ec-42010a83ae52
+      approvers: 7836ca44-05b3-11ec-94ec-42010a83ae52,c78562b8-f633-11ee-aafe-42010a83ae4c
       approvalInputs: |
         manifestt:
           type: string
