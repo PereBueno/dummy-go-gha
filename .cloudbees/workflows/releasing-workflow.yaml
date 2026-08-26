@@ -3,6 +3,10 @@ kind: workflow
 name: releasing-workflow
 on:
   workflow_dispatch:
+    inputs:
+      manifest:
+        type: string
+        description: The manifest
 metadata:
   stages/v1alpha1:
     - name: Stage 1
