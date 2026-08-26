@@ -2,19 +2,26 @@ name: scan-build-push-ecr
 apiVersion: automation.cloudbees.io/v1alpha1
 kind: workflow
 on:
+  workflow_dispatch:
+  pull_request:
+    types:
+      - reopened
+      - opened
+      - synchronize
   push:
     branches:
-      - '**'
+      - "**"
 permissions:
   scm-token-own: read
   scm-token-org: read
   id-token: write
 jobs:
   register-artifact:
-    uses: cloudbees.io/register-build-artifact@v1.0.6
-    vars: inherit
-    secrets: inherit
-    with:
-      name: dummy-go-gha
-      version: 0.0.1
-      url: https://example.test/dummy-go-gha/0.0.1/dummy-go-gha
+    steps:
+      - name: Get sourcecode
+        uses: cloudbees-io/checkout@v1
+      - name: register build
+        kind: build
+        uses: cloudbees-io/register-deployed-artifact@v2
+        with:
+          artifact-id: f78bf07e-56e7-452f-a1e5-9beaf5b4c52c

@@ -1,0 +1,26 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: deployer
+on:
+  workflow_dispatch:
+    inputs:
+      manifest:
+        type: string
+        default: dummy
+jobs:
+  dummy-go:
+    steps:
+      - kind: deploy
+        uses: cloudbees-io/checkout@v1
+        env:
+          env: PREPROD
+    needs:
+      - manual-intervention
+  manual-intervention:
+    with:
+      instructions: ""
+      disallowLaunchByUser: false
+      approvers: 7836ca44-05b3-11ec-94ec-42010a83ae52
+      notifyAllEligibleUsers: false
+    timeout-minutes: 4320
+    delegates: cloudbees-io/manual-approval/custom-job.yml@v1

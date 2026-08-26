@@ -1,0 +1,42 @@
+apiVersion: automation.cloudbees.io/v1alpha1
+kind: workflow
+name: releasing-workflow
+on:
+  workflow_dispatch:
+    inputs:
+      manifest:
+        type: string
+        description: The manifest
+metadata:
+  stages/v1alpha1:
+    - name: Stage 1
+      jobs:
+        - job1
+        - manual_approve
+        - ending
+jobs:
+  job1:
+    steps:
+      - run: echo "hello world"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: Hello world
+        shell: sh
+  manual_approve:
+    timeout-minutes: 4320
+    delegates: cloudbees-io/manual-approval/custom-job.yml@v1
+    with:
+      instructions: Approve the release
+      disallowLaunchByUser: false
+      notifyAllEligibleUsers: false
+      approvalInputs: |
+        manifestt:
+          type: string
+  ending:
+    needs:
+      - job1
+      - manual_approve
+    steps:
+      - run: echo "Done"
+        uses: docker://golang:1.20.3-alpine3.17
+        name: say goodye
+        shell: sh
